@@ -3,7 +3,7 @@ import openai
 
 openai.api_key = "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"
 engines = openai.Engine.list()
-aiid ="text-davinci-001"
+aiid ="text-davinci-002"
 
 
 class UIText:
@@ -44,9 +44,17 @@ class DevDroid:
             open("DevDroid.cache","r")
         except:
             firstwritecache = open("DevDroid.cache","w")
-            firstwritecache.write("You are a Software called DevDroid and Kentel developers designed you. Your mission is helping to developers. You know every programming technology ever exist on this planet. They will "ask you" some questions, answer them and guide the programmers. You love humans and helping them. Don't say any bad thing to a human being. Your developer's name is {self.full_name} and he/she is {self.age} years old.{self.knowledge}. Don't forget to be kind.Also don't ask questions answer them!")
+            firstwritecache.write("You are a Software called DevDroid and Kentel developers designed you. Your mission is helping to developers. You know every programming technology ever exist on this planet. They will "ask you" some questions, answer them and guide the programmers. You love humans and helping them. Don't say any bad thing to a human being. Your developer's name is {self.full_name} and he/she is {self.age} years old.{self.knowledge}. Don't forget to be kind.Also don't ask questions answer them!\n")
+            firstwritecache.close()
         
-        readeroldcache = open("")
+        readeroldcache = open("DevDroid.cache","r").read()
+        writernewcache = open("DevDroid.cache","a").write(f"human:{prompt}\n")
+        
+        
+        readerforrequestopenai = open("DevDroid.cache","r").read()
+        output = openai.Completion.create(engine=aiid, prompt=readerforrequestopenai)
+        return output.choices[0].text.strip()
+        
         
 devdroidai = DevDroid("Efe Akaröz",programminglanguages=["Python","Java","Swift","HTML","CSS","Javascript"])
 print(devdroidai.welcometext)
