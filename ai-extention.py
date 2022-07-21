@@ -2,7 +2,7 @@ import openai
 import os
 
 
-openai.api_key = "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"
+openai.api_key = "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"
 engines = openai.Engine.list()
 aiid ="text-davinci-002"
 
