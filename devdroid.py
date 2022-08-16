@@ -2,7 +2,7 @@ import openai
 import os
 
 
-openai.api_key = "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"
+openai.api_key = "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"
 engines = openai.Engine.list()
 aiid ="text-davinci-002"
 
@@ -66,16 +66,3 @@ class DevDroid:
         return output.choices[0].text.strip()
         
         
-devdroidai = DevDroid("Efe Akaröz",programminglanguages=["Python","Java","Swift","HTML","CSS","Javascript"])
-os.system("clear")
-print("======================DevDroid====================")
-print(devdroidai.welcometext)
-print("")
-while True:
-    typetext = input("Type>")
-    if typetext=="q":
-        break
-    else:
-        output=str(devdroidai.question(typetext))
-        print(output)
-
